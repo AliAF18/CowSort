@@ -9,9 +9,12 @@ public class CompbyAgethenName : IComparer<Cow>
     {
         if (x == null || y == null) return 0;
         
-        int ageComparison = x.Age.CompareTo(y.Age);
-        if (ageComparison != 0) return ageComparison;
+        int result = x.Age.CompareTo(y.Age);
+        if (result == 0)
+        {
+            result = x.Name.CompareTo(y.Name);
+        }
 
-        return string.Compare(x.Name, y.Name);
+        return result;
     }
 }
